@@ -34,7 +34,6 @@ public class CategoryController {
 
 
 
-
     @RequestMapping("/list/tree")
     // @RequiresPermissions("product:category:list")
     public R list1(@RequestParam Map<String, Object> params){
