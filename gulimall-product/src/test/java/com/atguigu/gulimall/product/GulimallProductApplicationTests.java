@@ -1,6 +1,6 @@
 package com.atguigu.gulimall.product;
 
-import com.aliyun.oss.OSSClient;
+
 import com.atguigu.gulimall.product.entity.BrandEntity;
 import com.atguigu.gulimall.product.service.BrandService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,8 +24,7 @@ class GulimallProductApplicationTests {
     @Autowired
     BrandService brandService;
 
-    @Resource
-    OSSClient ossClient;
+
 
 
 //    @Test
@@ -42,21 +41,22 @@ class GulimallProductApplicationTests {
 //    }
 
 
+//    @Resource
+//    OSSClient ossClient;
 
-
-    @Test
-    public void testUpload() throws FileNotFoundException {
-
-        // 上传文件流。
-        InputStream inputStream = new FileInputStream("C:\\Users\\17449\\Pictures\\Camera Roll\\微信截图\\微信图片_20220508162416.jpg");
-        ossClient.putObject("gulimall-zmm", "problem1.png", inputStream);
-
-
-        // 关闭OSSClient。
-        ossClient.shutdown();
-
-        System.out.println("上传完成...");
-    }
+//    @Test
+//    public void testUpload() throws FileNotFoundException {
+//
+//        // 上传文件流。
+//        InputStream inputStream = new FileInputStream("C:\\Users\\17449\\Pictures\\Camera Roll\\微信截图\\微信图片_20220508162416.jpg");
+//        ossClient.putObject("gulimall-zmm", "problem1.png", inputStream);
+//
+//
+//        // 关闭OSSClient。
+//        ossClient.shutdown();
+//
+//        System.out.println("上传完成...");
+//    }
 
 
 }
