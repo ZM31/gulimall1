@@ -51,6 +51,7 @@ class GulimallProductApplicationTests {
         InputStream inputStream = new FileInputStream("C:\\Users\\17449\\Pictures\\Camera Roll\\微信截图\\微信图片_20220508162416.jpg");
         ossClient.putObject("gulimall-zmm", "problem1.png", inputStream);
 
+
         // 关闭OSSClient。
         ossClient.shutdown();
 
