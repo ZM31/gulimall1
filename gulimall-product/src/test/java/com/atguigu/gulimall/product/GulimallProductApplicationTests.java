@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.product;
 
 
+import com.aliyun.oss.OSSClient;
 import com.atguigu.gulimall.product.entity.BrandEntity;
 import com.atguigu.gulimall.product.service.BrandService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -19,44 +20,46 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class GulimallProductApplicationTests {
+public class GulimallProductApplicationTests {
 
     @Autowired
     BrandService brandService;
 
+    @Test
+    public void contextLoads() {
+//        BrandEntity brandEntity = new BrandEntity();
+//        brandEntity.setDescript("pinpai");
+//        brandEntity.setName("小米");
+//        brandService.save(brandEntity);
+//        System.out.println("保存成功！！1");
+        List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id",1L));
+        list.forEach((item)->{
+            System.out.println(item);
+        });
+    }
+
+
+    @Resource
+    OSSClient ossClient;
+
+
+    @Test
+    public void testUpload() throws FileNotFoundException {
+
+        // 上传文件流。
+        InputStream inputStream = new FileInputStream("C:\\Users\\17449\\Pictures\\Camera Roll\\微信截图\\微信图片_20220508162420.jpg");
+        ossClient.putObject("gulimall-zmm", "soft.png", inputStream);
+
+        // 关闭OSSClient。
+        ossClient.shutdown();
+
+        System.out.println("上传完成...");
+
+    }
 
 
 
-//    @Test
-//    void contextLoads() {
-////        BrandEntity brandEntity = new BrandEntity();
-////        brandEntity.setDescript("pinpai");
-////        brandEntity.setName("小米");
-////        brandService.save(brandEntity);
-////        System.out.println("保存成功！！1");
-//        List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id",1L));
-//        list.forEach((item)->{
-//            System.out.println(item);
-//        });
-//    }
 
-
-//    @Resource
-//    OSSClient ossClient;
-
-//    @Test
-//    public void testUpload() throws FileNotFoundException {
-//
-//        // 上传文件流。
-//        InputStream inputStream = new FileInputStream("C:\\Users\\17449\\Pictures\\Camera Roll\\微信截图\\微信图片_20220508162416.jpg");
-//        ossClient.putObject("gulimall-zmm", "problem1.png", inputStream);
-//
-//
-//        // 关闭OSSClient。
-//        ossClient.shutdown();
-//
-//        System.out.println("上传完成...");
-//    }
 
 
 }
