@@ -31,10 +31,6 @@ public class AttrController {
     private AttrService attrService;
 
 
-
-
-
-
     /**
      *product/attr/base/list/{catelogId}
      */
