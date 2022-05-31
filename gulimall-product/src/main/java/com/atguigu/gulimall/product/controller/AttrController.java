@@ -34,6 +34,7 @@ public class AttrController {
 
 
 
+
     /**
      *product/attr/base/list/{catelogId}
      */
@@ -45,8 +46,6 @@ public class AttrController {
         PageUtils page = attrService.queryBaseAttrPage(params,catelogId,type);
         return R.ok().put("page",page);
     }
-
-
 
     /**
      * 列表

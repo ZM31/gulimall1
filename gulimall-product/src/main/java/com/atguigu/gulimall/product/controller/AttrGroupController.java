@@ -6,6 +6,7 @@ import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import com.atguigu.gulimall.product.entity.AttrEntity;
+import com.atguigu.gulimall.product.service.AttrAttrgroupRelationService;
 import com.atguigu.gulimall.product.service.AttrService;
 import com.atguigu.gulimall.product.service.CategoryService;
 import com.atguigu.gulimall.product.vo.AttrGroupRelationVo;
@@ -38,15 +39,38 @@ public class AttrGroupController {
     @Autowired
     AttrService attrService;
 
+    @Autowired
+    AttrAttrgroupRelationService relationService;
+
+
+    ///product/attrgroup/attr/relation
+    @PostMapping("/attr/relation")
+    public  R noattrRelationAttrList(@RequestBody List<AttrGroupRelationVo> vos){
+        relationService.saveBatch(vos);
+
+        return R.ok();
+    }
+
+
+
+
+
+    //product/attrgroup/1/noattr/relation
+    @GetMapping("/{attrgroupId}/noattr/relation")
+    public  R noattrRelationAttrList(@RequestParam Map<String,Object> params,
+                                     @PathVariable("attrgroupId") Long attrgroupId){
+        PageUtils page = attrService.getNoRelationAttr(params,attrgroupId);
+
+        return R.ok().put("page",page);
+    }
+
+
     ///product/attrgroup/attr/relation/delete
     @PostMapping("/attr/relation/delete")
     public R deleteRelation(@RequestBody AttrGroupRelationVo[] attrGroupRelationVo){
         attrService.deleteRelation(attrGroupRelationVo);
         return R.ok();
     }
-
-
-
 
 
     ///1/attr/relation
