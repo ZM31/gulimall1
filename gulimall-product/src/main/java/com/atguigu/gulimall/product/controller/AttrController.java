@@ -30,7 +30,6 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
-
     /**
      *product/attr/base/list/{catelogId}
      */
