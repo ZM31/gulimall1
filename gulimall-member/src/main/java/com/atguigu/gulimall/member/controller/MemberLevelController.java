@@ -31,6 +31,9 @@ public class MemberLevelController {
     @Autowired
     private MemberLevelService memberLevelService;
 
+    //member/memberlevel/list
+
+
     /**
      * 列表
      */
