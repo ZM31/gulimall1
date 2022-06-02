@@ -26,7 +26,7 @@ import com.atguigu.common.utils.R;
  * @date 2022-05-16 12:00:59
  */
 @RestController
-@RequestMapping("gulimallproduct/skuinfo")
+@RequestMapping("product/skuinfo")
 public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
@@ -37,7 +37,7 @@ public class SkuInfoController {
     @RequestMapping("/list")
     //@RequiresPermissions("product:skuinfo:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuInfoService.queryPage(params);
+        PageUtils page = skuInfoService.queryPageByCondition(params);
 
         return R.ok().put("page", page);
     }
